@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For Prasanna ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+            background: linear-gradient(to right, pink, hotpink);
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-top: 100px;
+            font-size: 42px;
+            color: white;
+        }
+
+        p {
+            font-size: 24px;
+            color: white;
+        }
+
+        button {
+            padding: 15px 35px;
+            font-size: 22px;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            margin: 20px;
+        }
+
+        #yes {
+            background: green;
+            color: white;
+        }
+
+        #no {
+            background: red;
+            color: white;
+            position: absolute;
+            top: 320px;
+            left: 55%;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Prasanna, Will You Marry Me? 💍❤️</h1>
+<p>You are very special to me 🌹</p>
+
+<button id="yes" onclick="showLove()">Yes 💖</button>
+<button id="no" onmouseover="moveButton()">No 😅</button>
+
+<script>
+function moveButton() {
+    let button = document.getElementById("no");
+
+    let x = Math.random() * (window.innerWidth - 120);
+    let y = Math.random() * (window.innerHeight - 80);
+
+    button.style.left = x + "px";
+    button.style.top = y + "px";
+}
+
+function showLove() {
+    document.body.innerHTML = `
+        <h1 style="color:white; margin-top:150px;">I Love You Prasanna ❤️</h1>
+        <p style="color:white; font-size:30px;">Thank you for saying Yes 💍✨</p>
+    `;
+}
+</script>
+
+</body>
+</html>
