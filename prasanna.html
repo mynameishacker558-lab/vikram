@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>For Prasanna ❤️</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            text-align: center;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4); /* Softer pink gradient */
+            font-family: 'Arial', sans-serif;
+            position: relative; /* Essential for floating hearts */
+        }
+
+        h1 {
+            margin-top: 100px;
+            font-size: 48px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 10; /* Keeps text above hearts */
+        }
+
+        p {
+            font-size: 26px;
+            color: white;
+            position: relative;
+            z-index: 10;
+        }
+
+        .btn-container {
+            margin-top: 30px;
+            position: relative;
+            z-index: 10;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 24px;
+            border: none;
+            border-radius: 50px; /* Curvier buttons */
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: transform 0.1s;
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+
+        #yes {
+            background-color: #4CAF50; /* Elegant Green */
+            color: white;
+            margin-right: 20px;
+        }
+
+        #no {
+            background-color: #f44336; /* Elegant Red */
+            color: white;
+            position: absolute;
+        }
+
+        /* --- Falling Hearts CSS --- */
+        .heart {
+            position: absolute;
+            top: -10px;
+            color: rgba(255, 255, 255, 0.7); /* Semitransparent white/pink hearts */
+            font-size: 20px;
+            user-select: none;
+            animation: fall linear infinite;
+            z-index: 1; /* Hearts float behind text/buttons */
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(105vh) rotate(360deg); /* Fall past bottom of screen and rotate */
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Prasanna, Will You Marry Me? 💍❤️</h1>
+    <p>You make my world beautiful 🌹</p>
+
+    <div class="btn-container">
+        <button id="yes" onclick="showLove()">Yes 💖</button>
+        <button id="no" onmouseover="moveButton()">No 😅</button>
+    </div>
+
+    <script>
+        // --- Core Functions ---
+        function moveButton() {
+            let button = document.getElementById("no");
+            // Calculate random position, keeping button within viewport
+            let x = Math.random() * (window.innerWidth - button.offsetWidth - 20);
+            let y = Math.random() * (window.innerHeight - button.offsetHeight - 20);
+            
+            button.style.left = x + "px";
+            button.style.top = y + "px";
+        }
+
+        function showLove() {
+            // Stop generating new hearts
+            clearInterval(heartInterval);
+            // Clear existing hearts
+            document.querySelectorAll('.heart').forEach(heart => heart.remove());
+
+            document.body.innerHTML = `
+                <div style="margin-top:150px; position:relative; z-index:10;">
+                    <h1 style="color:white; font-size: 60px;">I Love You Prasanna ❤️</h1>
+                    <p style="color:white; font-size:36px;">You have made me the happiest person! 💍✨</p>
+                </div>
+            `;
+            document.body.style.background = "linear-gradient(to right, #ff758c, #ff7c7c)"; // Intense love gradient
+        }
+
+        // --- Falling Hearts JavaScript ---
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerText = '❤️'; // Or use '💖', '💗', etc.
+
+            // Randomize starting position (horizontal)
+            heart.style.left = Math.random() * 100 + 'vw';
+            
+            // Randomize animation duration (speed) between 3s and 6s
+            heart.style.animationDuration = Math.random() * 3 + 3 + 's';
+            
+            // Randomize size slightly
+            heart.style.fontSize = Math.random() * 15 + 15 + 'px';
+
+            document.body.appendChild(heart);
+
+            // Remove heart after it finishes falling to prevent memory leaks
+            setTimeout(() => {
+                heart.remove();
+            }, 6000); // Must match maximum animation duration
+        }
+
+        // Generate a new heart every 300ms
+        const heartInterval = setInterval(createHeart, 300);
+    </script>
+</body>
+</html>
